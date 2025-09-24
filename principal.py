@@ -190,3 +190,153 @@ listaString = ["Hola", "como", "estás", "espero", "que", "bien"]
 listaString.reverse()
 
 print(listaString)
+
+#O de la siguiente manera
+
+listaString2 = ["Soy", "el", "mejor", "programador", "del", "mundo"]
+
+print(listaString2[::-1]) #Esta froma lo que hace pues es ir para atrás gracias a los step negativos
+
+# Dada una lista de cadenas, pide una cadenena por teclado e indica si está en la lista, indica cuantas veces aparece en la lista, 
+# lee otra cadena y sustituye la primera por la segunda en la lista, 
+# y por último borra la cadena de la lista
+
+# listaDeCadenas = ["hola", "adios", "hola", "hola", "buenos", "dias"]
+
+# cadena = input("Introduce una cadena: ")
+
+# if cadena in listaDeCadenas:
+#     print("La cadena está en la lista") 
+# else:
+#     print("La cadena no está en la lista")
+
+# print("La cadena aparece", listaDeCadenas.count(cadena), "veces")
+
+# cadena2 = input("Cadena a reemplazar:")
+# apariciones = listaDeCadenas.count(cadena)
+# pos = 0
+
+# for i in range(0,apariciones):
+# 	pos = listaDeCadenas.index(cadena,pos)
+# 	listaDeCadenas[pos] = cadena2
+# print(listaDeCadenas)
+
+# Dado una lista, hacer un programa que indique si está ordenada o no.
+
+listaNumeros = [5,4,4,1,9,1,3,2,1]
+
+listaNumerosAux = listaNumeros[:]
+
+listaNumeros.sort()
+
+if listaNumeros == listaNumerosAux:
+    print("La lista está ordenada")
+else:
+    print("La lista no está ordenada")
+
+#Map: Ejecutar funciones sobre secuencias
+
+lista = [1,2,3,4,5,6,7,8,9,10]
+
+def multiplicarPorDiez(numero):
+    return numero * 10
+
+print(list(map(multiplicarPorDiez, lista))) 
+
+#Filter: Filtrar elementos de una secuencia que den true
+
+lista = [1,2,3,4,5,6,7,8,9,10]
+def esPar(numero):
+    return numero % 2 == 0
+
+print(list(filter(esPar, lista)))
+
+ #Reduce: Devuelve un único valor a partir de una secuencia
+
+from functools import reduce
+
+lista = [1,2,3,4,5,6,7,8,9,10]
+def sumarTodaLaLista(num1, num2):
+    return num1 + num2
+
+print(reduce(sumarTodaLaLista, lista)) #Va sumando los numeros de la lista acumulandolos en un unico valor
+
+#list comprehension
+
+#Crear una lista fácilmente a partir de expresiones
+
+print([x * 25 for x in [1,2,3,4,5]]) #Crea una lista con los numeros del 1 al 9 multiplicados por 10
+print([x for x in range(10) if x % 2 == 0]) #Lista con los numeros pares del 0 al 9
+print([x + y for x in [1,2,3] for y in [4,5,6]]) #Combina 2 listas el primer elemento se suma a todos los elementos de la segunda lista y así sucesivamente
+
+#Tuplas: Es como una lista pero inmutable, es decir, no se puede modificar una vez creado.
+#Empaquetado
+tupla = (1,2,3,4,5,5)
+tupla2 = 1,2,3,4,5,5 #También se puede crear sin paréntesis
+tupla3 = tuple([1,2,3,4,5,5]) #También se puede crear con el constructor tuple()
+print(tupla)
+
+#Desempaquetado de tuplas
+# a,b,c = tupla  #Esto da error ya que hay 6 elementos y solo 3 variables
+# print(a)
+
+# Pero se puede hacer esto para estas ocaciones
+a,b,c, *resto = tupla #El operador * indica que el resto de elementos se guarden en la variable resto en una lista 
+print(a)
+print(b)
+print(c)
+print(resto)
+
+#Podemos recorrer tuplas
+
+for elemento in tupla:
+    print(elemento, end=" ")
+
+
+# Si esta un elemento en la tupla o no
+print(3 in tupla)
+
+#Podemos concatenar tuplas
+tupla4 = tupla + (6,7,8) 
+print (tupla4)
+
+#Repetir tuplas
+tupla5 = tupla * 3
+print(tupla5)
+
+#Mirar posiciones en concreto
+print(tupla4[0])
+
+#Y hacer slices
+print(tupla4[0:3])
+
+#Y también funciones que habiamos visto en las listas como len, max, min, sum, sorted, enumerate
+
+#ESTO NO SE PUEDE HACER YA QUE LAS TUPLAS SON INMUTABLES
+# tupla4[0] = 100
+
+#Y los metodos de busqueda como count e index funcionan en esta estructura de datos
+
+#Range: Sirve para crear secuencias de números enteros, es inmutable, es muy útil para reccorer con bucles
+
+rango = range(0,10,2) #Empieza en 0, termina en 10 (no incluido) y va de 2 en 2
+print (list((rango))) #Hay que convertirlo a lista para verlo
+print(type(rango))
+
+#Ejemplo de uso con bucle for
+for numero in range(0,10,2):
+    print(numero, end=" ")
+
+# #Los rangos se pueden recorrer.
+# Operadores de pertenencia: in y not in.
+# Indexación
+# Slices 
+#Y también funciones que habiamos visto en las listas como len, max, min, sum, sorted, enumerate
+
+#COMO EN LAS TUPLAS NO SE PUEDE MODIFICAR
+
+#Podemos con .start y .stop ver el inicio y el final del rango y .step el incremento
+print()
+print(rango.start)
+print(rango.stop)  
+print(rango.step)
