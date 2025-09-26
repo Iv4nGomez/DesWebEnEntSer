@@ -123,12 +123,65 @@
 
 ##Ahora lo hago de nuevo optimizando estos puntos que he hecho mal 
 
-frase = input("Introduce una frase: ")
-palabras = frase.split()
-listaSinRepetir = [palabra for palabra in set(palabras) if(sum(1 for letra in palabra if letra in "aeiou")>4)]
+# frase = input("Introduce una frase: ")
+# palabras = frase.split()
+# listaSinRepetir = [palabra for palabra in set(palabras) if(sum(1 for letra in palabra if letra in "aeiou")>4)]
 
-palabrasVocales = [(palabra , sum(1 for letra in palabra if letra in "aeiou")) for palabra in listaSinRepetir]
+# palabrasVocales = [(palabra , sum(1 for letra in palabra if letra in "aeiou")) for palabra in listaSinRepetir]
 
-ordenarPorVocales = sorted(palabrasVocales, key=lambda x: x[1], reverse=True)
+# ordenarPorVocales = sorted(palabrasVocales, key=lambda x: x[1], reverse=True)
 
-print(ordenarPorVocales)
+# print(ordenarPorVocales)
+
+# Ejercicio 1: Contar palabras únicas
+
+# Pide al usuario una frase y muestra cuántas palabras distintas tiene.
+
+#Como lo haria yo
+# frase = input("Introduce una frase: ")
+# palabras = frase.split()
+
+# print("Tiene:" , len(set(palabras)), "palabras diferentes.")
+
+# frase = input("Introduce una frase: ")
+# palabras = frase.lower().split() #Lower para todo a minusculas
+
+# print("Tiene:" , len(set(palabras)), "palabras diferentes.") #Los no alfanumericos se pueden solucionar con expresiones regulares pero eso ya lo vere mas adelante
+
+#Optimizado con errores arreglado y lo más corto posible
+
+# print("Tiene: ", len(set(input("Introduce una frase: ").lower().split())), "palabras distintas.") #Es una forma más optima PERO da igual en este caso el rendimiento va a ser el mismo
+
+
+# Enunciado
+
+# Crea una lista con los números del 1 al 20.
+# Usa filter + lambda para quedarte solo con los números pares.
+# Muestra el resultado.
+
+listaNumeros = list(range(0,21))
+listaFiltrada = list(filter(lambda n: n % 2 == 0, listaNumeros)) ##Filter si es tru devuelve un iterador que lo convertimos en lista
+
+print(listaFiltrada)
+
+# 🔹 Enunciado
+
+# Pide al usuario una frase o una lista de palabras separadas por comas.
+# Convierte la entrada en una lista de palabras.
+# Ordénalas de menor a mayor longitud usando sorted con lambda como clave (key).
+# Muestra la lista ordenada.
+
+#SE PUEDE OTIMIZAR UN POCO MAS
+
+# frase = input("Introduce varias palabras separadas por ,: ") ##CON STRIP PODEMOS OPTIMIZAR ESTO, PARA QUE LOS ESPACIOS NO IMPORTEN
+
+# palabras = frase.split(", ")
+
+# palabrasOrdenadas = sorted(palabras, key=lambda p: len(p))
+# print(palabrasOrdenadas)
+
+#OPTIMO
+frase = input("Introduce varias palabras separadas por ,: ")
+palabras = frase.strip().split(", ") #Quita los espacios que pueda poner el usuario
+
+
