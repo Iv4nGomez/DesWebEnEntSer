@@ -159,10 +159,10 @@
 # Usa filter + lambda para quedarte solo con los números pares.
 # Muestra el resultado.
 
-listaNumeros = list(range(0,21))
-listaFiltrada = list(filter(lambda n: n % 2 == 0, listaNumeros)) ##Filter si es tru devuelve un iterador que lo convertimos en lista
+# listaNumeros = list(range(0,21))
+# listaFiltrada = list(filter(lambda n: n % 2 == 0, listaNumeros)) ##Filter si es tru devuelve un iterador que lo convertimos en lista
 
-print(listaFiltrada)
+# print(listaFiltrada)
 
 # 🔹 Enunciado
 
@@ -181,7 +181,61 @@ print(listaFiltrada)
 # print(palabrasOrdenadas)
 
 #OPTIMO
-frase = input("Introduce varias palabras separadas por ,: ")
-palabras = frase.strip().split(", ") #Quita los espacios que pueda poner el usuario
+# frase = input("Introduce varias palabras separadas por ,: ")
+# palabras = frase.strip().split(", ") #Quita los espacios que pueda poner el usuario
 
 
+# 📝 25 Ejercicios tipo examen
+# 🔤 Cadenas (1–9)
+            
+# Pide una frase y cuenta cuántas letras tiene (sin contar espacios).
+
+
+# frase = input("Introduce una frase: ").split()
+# contarLetras = [len(palabra) for palabra in frase]
+# print("Tiene esta frase esta cantidad del letras: ", sum(contarLetras))
+
+# # Pide una palabra y comprueba si es palíndroma.
+
+# palabra = input("Introduce una palabra: ")
+# print("Si es políndromo" if palabra == palabra[::-1] else "No es políndromo")
+
+# # Pide una frase y conviértela toda a ma yúsculas
+
+# print(input("Introduce una frase: ").upper())
+
+
+# # Pide una frase y cuenta cuántas vocales de cada tipo (a, e, i, o, u) tiene.
+
+# vocales = {}
+# frase = input("Introduce una frase: ").strip()
+# vocales = {letra: frase.count(letra) for letra in frase if letra in "aeiou"}
+# print(vocales)
+ 
+# # Pide una palabra y muestra todos sus caracteres en orden inverso.
+
+# print(input("Introduce una palabra: ")[::-1])
+
+# # Elimina los espacios de una cadena y muestra la cadena resultante.
+
+# print(input("Introduce una cadena: ").strip().replace(" ", ""))
+
+ 
+# # Pide una frase y devuelve las palabras ordenadas alfabéticamente.
+
+# palabras = input("Introduce una frase: ").strip().split(" ")
+# print(sorted(palabras))
+
+
+# Pide una frase y devuelve las palabras ordenadas por longitud.
+
+# palabras = input("Introduce una frase: ").strip().split(" ")
+# print(sorted(palabras, key=len, reverse=True))
+
+# Encuentra todos los subcadenas de 3 caracteres que sean palíndromos.
+
+# cadena = input("Introduce una cadena: ").replace(" ", "")
+
+# polindormos_3caracter = [cadena[i:i+3] for i in range(len(cadena) -2) if cadena[i:i+3] == cadena[i:i+3][::-1]]
+
+# print(polindormos_3caracter)
