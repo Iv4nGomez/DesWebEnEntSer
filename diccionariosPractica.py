@@ -22,12 +22,9 @@ print(videojuegos)
 
 for juego in videojuegos:
     print(juego["nombre"])
-
-
-#Tarea:
-
 print("Media de todas las valoraciones: ", sum([juego["valoracion"] for juego in videojuegos])/len(videojuegos))
 
+#Tarea:
 #Crear lista en una sola linea con todos los nombres de los videojuegos
 
 nombreJuegos = [juego.get("nombre") for juego in videojuegos]
