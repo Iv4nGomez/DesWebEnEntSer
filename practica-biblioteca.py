@@ -69,10 +69,36 @@ def estadisticas_usuarios(biblioteca):
     
     return statsPrestamosUsr
 
+#JSON
 
 def guardar_biblioteca(biblioteca, nombre_fichero):
-    with open(f"{nombre_fichero}.json" ) as fichero:
-        json.dump(biblioteca, fichero)
+  
+        try: 
+            with open(f"{nombre_fichero}.json", "w", encoding= "utf-8") as fichero:
+                json.dump(biblioteca, fichero, indent=4, ensure_ascii=False) 
+            print("Se ha guardado los datos correctamente!")
+        except Exception:
+            print(f"El fichero no se guardo correctamente")
+
+def cargar_biblioteca(nombre_fichero):
+    try:
+        with open(f"{nombre_fichero}.json ", "r", encoding="utf-8") as fichero:
+            datos = json.load(fichero)
+        return datos
+    except FileNotFoundError:
+       print("No se encontro el fichero indicado, miralo bien anda")
+       return []
+
+def exportar_resumen(biblioteca, nombre_fichero):
+    with open(f"{nombre_fichero}.txt", "w", encoding="utf-8") as fichero:
+        for libro in biblioteca:
+             for c, v in libro.items():
+                 if (c == "prestamos"):
+                     fichero.write(f"Préstamos totales: {sum(v.values())}\n")
+                     break
+                 fichero.write(f"{c}: {v} | ")
+
+       
 
 
 
@@ -155,8 +181,49 @@ def main():
     for clave, valor in diccionarioDevuelto.items():
         print(f"{clave} -----> {valor}")
 
-    
-    guardar_biblioteca(biblioteca, "datos")
+    #JSON
+
+    if not cargar_biblioteca("biblioteca"):
+          biblioteca = [
+        {
+            "titulo": "El principito",
+            "autor": "Antonie de Saint-Exupéry",
+            "anio": 1943,
+            "genero": "Fábula",
+            "prestamos": {"Manuel":5, "Antonio":3, "Fernando":3}
+        },
+        {
+            "titulo": "Invisible",
+            "autor": "Eloy moreno",
+            "anio": 2020,
+            "genero": "drama",
+            "prestamos": {"Javier": 5, "Unay": 3, "Daniel": 4}
+        },
+
+        {
+            "titulo": "Hábitos Atómicos",
+            "autor": "Jeams Clear",
+            "anio": 2020,
+            "genero": "Desarrollo personal",
+            "prestamos": {"Mariano": 5, "Pedro":5, "Carlos":4}
+        },
+
+         {
+            "titulo": "Animales Fantasticos",
+            "autor": "JK Rowling",
+            "anio": 2015,
+            "genero": "Misterio",
+            "prestamos": {"Lucia": 5, "Laura":7, "Pepe":8}
+        }
+
+        
+
+    ]
+          
+    guardar_biblioteca(biblioteca,"biblioteca")
+
+    exportar_resumen(biblioteca, "resumen_biblioteca")
+
 
 # Ejecutar programa
 if __name__ == "__main__":
