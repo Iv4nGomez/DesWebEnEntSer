@@ -1,3 +1,5 @@
+import json
+
 # -----------------------------
 # Gestión de Biblioteca Digital
 # -----------------------------
@@ -66,6 +68,13 @@ def estadisticas_usuarios(biblioteca):
                 statsPrestamosUsr[usuario] = cantidad
     
     return statsPrestamosUsr
+
+
+def guardar_biblioteca(biblioteca, nombre_fichero):
+    with open(f"{nombre_fichero}.json" ) as fichero:
+        json.dump(biblioteca, fichero)
+
+
 
 
 # Programa principal
@@ -145,6 +154,9 @@ def main():
 
     for clave, valor in diccionarioDevuelto.items():
         print(f"{clave} -----> {valor}")
+
+    
+    guardar_biblioteca(biblioteca, "datos")
 
 # Ejecutar programa
 if __name__ == "__main__":
